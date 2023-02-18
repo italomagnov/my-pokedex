@@ -28,7 +28,7 @@ export function Card(pokemon: any) {
         setExpanded(!expanded);
     };
 
-    const typeClass = pokemon.types[0].type.name;
+    const typeClass: keyof typeof typeColors = pokemon.types[0].type.name;
 
     const bgColor = typeColors[typeClass];
 
