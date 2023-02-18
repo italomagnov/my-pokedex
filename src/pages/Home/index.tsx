@@ -1,20 +1,18 @@
-import { NavLink } from 'react-router-dom';
-import pokeball from '../../assets/btn-pokeball.svg';
+import { useAtom } from 'jotai';
+import { Button } from '../../components/Button';
+import { Input } from '../../components/Input';
+import { inputValuePokemon } from '../../context/atom';
 
 export function Home() {
+    const [pokemon, setPokemon] = useAtom(inputValuePokemon);
+
     return (
-        <div className="h-screen flex flex-col items-center justify-center gap-4">
-            <input
-                className="w-full px-4 py-2 rounded-lg outline-none shadow-lg"
-                type="text"
-                placeholder="Digite o ID ou o nome do pokemon"
+        <form className="h-screen flex flex-col items-center justify-center gap-4">
+            <Input
+                value={pokemon}
+                onchange={(e) => setPokemon(e.target.value)}
             />
-            <NavLink to="/">
-                <img
-                    src={pokeball}
-                    alt=""
-                />
-            </NavLink>
-        </div>
+            <Button pathTo={`/pokemon/${pokemon}`} />
+        </form>
     );
 }

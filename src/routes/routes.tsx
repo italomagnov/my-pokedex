@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { DefaultPage } from '../pages/DefaultPage';
 import { Home } from '../pages/Home';
+import { Pokemon } from '../pages/Pokemon';
 
 function AppRoutes() {
     return (
@@ -12,6 +13,10 @@ function AppRoutes() {
                 <Route
                     index
                     element={<Home />}
+                />
+                <Route
+                    path="pokemon/:id"
+                    element={<Pokemon />}
                 />
             </Route>
         </Routes>
